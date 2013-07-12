@@ -11,9 +11,20 @@
  * Depends:
  *	jquery.ui.effect.js
  */
-(function( $, undefined ) {
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+		// AMD. Register as an anonymous module.
+		define([
+			"jquery",
+			"./jquery.ui.effect"
+		], factory );
+	} else {
+		// Browser globals
+		factory( jQuery );
+	}
+}(function( $ ) {
 
-$.effects.effect.transfer = function( o, done ) {
+return $.effects.effect.transfer = function( o, done ) {
 	var elem = $( this ),
 		target = $( o.to ),
 		targetFixed = target.css( "position" ) === "fixed",
@@ -44,4 +55,4 @@ $.effects.effect.transfer = function( o, done ) {
 			});
 };
 
-})(jQuery);
+}));

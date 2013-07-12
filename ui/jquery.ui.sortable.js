@@ -13,9 +13,22 @@
  *	jquery.ui.mouse.js
  *	jquery.ui.widget.js
  */
-(function( $, undefined ) {
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+		// AMD. Register as an anonymous module.
+		define([
+			"jquery",
+			"./jquery.ui.core",
+			"./jquery.ui.mouse",
+			"./jquery.ui.widget"
+		], factory );
+	} else {
+		// Browser globals
+		factory( jQuery );
+	}
+}(function( $ ) {
 
-$.widget("ui.sortable", $.ui.mouse, {
+return $.widget("ui.sortable", $.ui.mouse, {
 	version: "@VERSION",
 	widgetEventPrefix: "sort",
 	ready: false,
@@ -1297,4 +1310,4 @@ $.widget("ui.sortable", $.ui.mouse, {
 
 });
 
-})(jQuery);
+}));
